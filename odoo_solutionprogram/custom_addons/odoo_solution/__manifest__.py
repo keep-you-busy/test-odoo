@@ -11,7 +11,7 @@ This module is a test module based by sale_management module in odoo.
     """,
     'depends': ['sale'],
     'data': [
-        'views/sale_order_views.xml'
+        'views/sale_order_form_inherit.xml'
     ],
     'installable': True,
     'auto_install': False,

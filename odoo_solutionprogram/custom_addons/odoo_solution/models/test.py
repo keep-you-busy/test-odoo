@@ -6,7 +6,7 @@ from odoo.exceptions import ValidationError
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    test = fields.Char(string='Test', readonly=True, states={'draft': [('readonly', False)]})
+    x_test = fields.Char(string='Test', readonly=True, states={'draft': [('readonly', False)]})
 
     @api.onchange('order_line', 'date_order')
     def _onchange_test(self):
@@ -17,11 +17,11 @@ class SaleOrder(models.Model):
 
     @api.model
     def create(self, vals):
-        if 'test' not in vals:
-            vals['test'] = str(random.randint(0, 1000))
+        if 'x_test' not in vals:
+            vals['x_test'] = str(random.randint(0, 1000))
         return super().create(vals)
 
     def write(self, vals):
-        if 'test' in vals and len(vals['test']) > 50:
+        if 'x_test' in vals and len(vals['x_test']) > 50:
             raise ValidationError('Длина текста должна быть меньше 50 символов!')
         return super().write(vals)
